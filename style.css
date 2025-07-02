@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-blue: #0D2A4F;
+    --primary-orange: #F58220;
+    --white: #FFFFFF;
+    --light-gray: #f4f4f4;
+    --dark-text: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--primary-blue);
+    color: var(--dark-text);
+}
+
+/* Animasi Latar Belakang */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-blue), #0a203a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Kontainer Pop-up */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.popup-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    transform: scale(0.7);
+    animation: popup-scale 0.5s forwards cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+@keyframes popup-scale {
+    to { transform: scale(1); }
+}
+
+.popup-content .logo {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.popup-content h2, .popup-content h3 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+}
+
+.popup-content p {
+    color: var(--dark-text);
+    margin-bottom: 25px;
+}
+
+.popup-content button {
+    background-color: var(--primary-orange);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 5px;
+}
+
+.popup-content button:hover {
+    background-color: #e07010;
+    transform: translateY(-3px);
+}
+
+/* Kontainer Utama Mahasiswa */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.form-container {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-blue);
+}
+
+#current-time {
+    font-size: 14px;
+    color: var(--primary-orange);
+    font-weight: 600;
+}
+
+/* Form Styling */
+#absensi-form input, #absensi-form select, #absensi-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#absensi-form input:focus, #absensi-form select:focus, #absensi-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 3px rgba(245, 130, 32, 0.3);
+}
+
+#submit-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, var(--primary-orange), #ff983e);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#submit-button:hover {
+    transform: scale(1.02);
+}
+
+/* Helper Classes */
+.hidden {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* Notifikasi */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 2000;
+    animation: slideInUp 0.5s forwards, slideOutDown 0.5s 2.5s forwards;
+}
+
+@keyframes slideInUp {
+    from { transform: translate(-50%, 100px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes slideOutDown {
+    from { transform: translate(-50%, 0); opacity: 1; }
+    to { transform: translate(-50%, 100px); opacity: 0; }
+}
+
+/* Responsive untuk Desktop */
+@media (min-width: 768px) {
+    .popup-content {
+        padding: 40px;
+    }
+    .form-container {
+        padding: 40px;
+    }
+}

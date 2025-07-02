@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Magang KAI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div id="welcome-popup" class="popup-container">
+        <div class="popup-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Logo_PT_Kereta_Api_Indonesia_%28Persero%29_2020.svg/2560px-Logo_PT_Kereta_Api_Indonesia_%28Persero%29_2020.svg.png" alt="Logo KAI" class="logo">
+            <h2>Selamat Datang</h2>
+            <p>Sistem Absensi Mahasiswa Magang PT Kereta Api Indonesia.</p>
+            <button id="close-welcome">Masuk</button>
+        </div>
+    </div>
+
+    <div id="login-choice-popup" class="popup-container hidden">
+        <div class="popup-content">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Logo_PT_Kereta_Api_Indonesia_%28Persero%29_2020.svg/2560px-Logo_PT_Kereta_Api_Indonesia_%28Persero%29_2020.svg.png" alt="Logo KAI" class="logo">
+            <h3>Login Sebagai:</h3>
+            <button onclick="showMahasiswaLogin()">Mahasiswa</button>
+            <button onclick="location.href='/admin/'">Admin</button>
+        </div>
+    </div>
+    
+    <main id="mahasiswa-section" class="main-container hidden">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Absensi Harian</h2>
+                <p id="current-time"></p>
+            </div>
+            <form id="absensi-form">
+                <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                <input type="text" id="nim" placeholder="NIM/Nomor Mahasiswa" required>
+                
+                <select id="status-kehadiran" required>
+                    <option value="" disabled selected>Pilih Status Kehadiran</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Izin">Izin</option>
+                    <option value="Sakit">Sakit</option>
+                    <option value="Libur">Libur</option>
+                </select>
+
+                <div id="dinas-section" class="hidden">
+                    <select id="pilihan-dinas">
+                        <option value="" disabled selected>Pilih Jadwal Dinas</option>
+                        <option value="Pagi">Dinas Pagi (06:00 - 14:00)</option>
+                        <option value="Siang">Dinas Siang (14:00 - 22:00)</option>
+                        <option value="Malam">Dinas Malam (22:00 - 06:00)</option>
+                    </select>
+                </div>
+
+                <div id="logbook-section" class="hidden">
+                     <h3>Logbook Harian</h3>
+                     <textarea id="logbook" rows="4" placeholder="Tuliskan kegiatan harian Anda di sini..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-button">Kirim Absensi</button>
+            </form>
+        </div>
+    </main>
+    
+    <div id="success-notification" class="notification hidden">
+        <p>Absensi berhasil dikirim! ✅</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
